@@ -1,0 +1,67 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/tools"
+    >
+
+  <data>
+
+    <variable
+        name="viewModel"
+        type="com.slelyuk.android.ccooking.presentation.viewmodel.RecipesViewModel"
+        />
+
+    <variable
+        name="view"
+        type="com.slelyuk.android.ccooking.presentation.MainView"
+        />
+
+  </data>
+
+  <android.support.design.widget.CoordinatorLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      >
+
+    <!--<include layout="@layout/toolbar"/>-->
+
+    <!--<android.support.v4.widget.SwipeRefreshLayout-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--app:layout_behavior="@string/appbar_scrolling_view_behavior"-->
+    <!--bind:isRefreshing="@{viewModel.showProgress}"-->
+    <!--&gt;-->
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layoutManager="android.support.v7.widget.LinearLayoutManager"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        bind:adapter="@{viewModel.adapter}"
+        bind:paginationListener="@{viewModel}"
+        />
+
+    <!--<com.yalantis.filter.widget.Filter-->
+    <!--android:id="@+id/filter"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--bind:filterAdapter="@{viewModel.filterAdapter}"-->
+    <!--/>-->
+
+    <!--</android.support.v4.widget.SwipeRefreshLayout>-->
+
+    <!--<com.arlib.floatingsearchview.FloatingSearchView-->
+    <!--android:id="@+id/floating_search_view"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--app:floatingSearch_close_search_on_keyboard_dismiss="true"-->
+    <!--app:floatingSearch_dimBackground="true"-->
+    <!--app:floatingSearch_leftActionMode="noLeftAction"-->
+    <!--app:floatingSearch_menu="@menu/receipts_main"-->
+    <!--app:floatingSearch_searchHint="Search..."-->
+    <!--app:floatingSearch_showSearchKey="false"-->
+    <!--app:floatingSearch_suggestionsListAnimDuration="250"-->
+    <!--/>-->
+
+  </android.support.design.widget.CoordinatorLayout>
+
+</layout>

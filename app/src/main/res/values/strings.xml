@@ -1,0 +1,9 @@
+<resources>
+  <string name="app_name">CalmCooking</string>
+
+  <string name="action_sign_in">Sign in</string>
+  <string name="auth_required">Authorization required</string>
+
+  <string name="title_recipes">Recipes</string>
+  <string name="title_recipe">Recipe</string>
+</resources>

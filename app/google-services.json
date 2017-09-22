@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "1068395424866",
+    "firebase_url": "https://calm-recipes.firebaseio.com",
+    "project_id": "calm-recipes",
+    "storage_bucket": "calm-recipes.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1068395424866:android:f8ae814a809964be",
+        "android_client_info": {
+          "package_name": "com.slelyuk.android.ccooking"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1068395424866-hrreisual2fbq9ibhi94i62drptgetip.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.slelyuk.android.ccooking",
+            "certificate_hash": "7f8052dea4c8b8b7da40dc42136ba3a54b7ca279"
+          }
+        },
+        {
+          "client_id": "1068395424866-ogm0970c2r5r47k6mmpo4jdcqdnvjgkc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC8eORb5QoSFKNqqnlYL3aYKAe-Ne1MDHg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1068395424866-ogm0970c2r5r47k6mmpo4jdcqdnvjgkc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

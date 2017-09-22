@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
+
+  <data>
+    <variable
+        name="viewModel"
+        type="com.slelyuk.android.ccooking.presentation.viewmodel.RecipeViewModel"
+        />
+  </data>
+
+  <android.support.v7.widget.CardView
+      android:id="@+id/cardView"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginBottom="2dp"
+      android:layout_marginLeft="4dp"
+      android:layout_marginRight="4dp"
+      android:layout_marginTop="2dp"
+      android:onClick="@{() -> viewModel.onClick()}"
+      app:cardBackgroundColor="@color/cardview_light_background"
+      app:cardPreventCornerOverlap="true"
+      >
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="108dp"
+        app:layout_constraintBottom_toTopOf="@+id/tv_description"
+        app:layout_constraintTop_toTopOf="@+id/tv_description"
+        tools:layout_editor_absoluteX="8dp"
+        >
+
+      <ImageView
+          android:id="@+id/icon"
+          android:layout_width="0dp"
+          android:layout_height="0dp"
+          android:scaleType="centerCrop"
+          app:imageUrl="@{viewModel.image}"
+          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintDimensionRatio="4:3"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toTopOf="parent"
+          app:layout_constraintVertical_bias="0.5"
+          app:visible="@{viewModel.image != null}"
+          />
+      <TextView
+          android:id="@+id/tv_name"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_marginEnd="8dp"
+          android:layout_marginStart="8dp"
+          android:layout_marginTop="8dp"
+          android:ellipsize="end"
+          android:fontFamily="@font/hammersmith_one"
+          android:lines="1"
+          android:text="@{viewModel.name}"
+          android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+          android:textStyle="bold"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toEndOf="@+id/icon"
+          app:layout_constraintTop_toTopOf="parent"
+          tools:fontFamily="@font/hammersmith_one"
+          tools:text="Name"
+          />
+      <TextView
+          android:id="@+id/tv_description"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_marginEnd="8dp"
+          android:layout_marginStart="8dp"
+          android:ellipsize="end"
+          android:fontFamily="@font/marvel"
+          android:lines="4"
+          android:text="@{viewModel.description}"
+          android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toEndOf="@+id/icon"
+          app:layout_constraintTop_toBottomOf="@+id/tv_name"
+          app:visible="@{viewModel.description != null}"
+          tools:fontFamily="@font/marvel"
+          tools:text="Description"
+          />
+      <TextView
+          android:id="@+id/tv_time"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginBottom="8dp"
+          android:layout_marginEnd="8dp"
+          android:layout_marginTop="8dp"
+          android:fontFamily="@font/marvel_italic"
+          android:text="@{viewModel.timeTotal}"
+          android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+          android:textSize="10sp"
+          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintTop_toBottomOf="@+id/tv_description"
+          app:visible="@{viewModel.timeTotal != null}"
+          tools:fontFamily="@font/marvel_italic"
+          tools:text="Time"
+          />
+
+    </android.support.constraint.ConstraintLayout>
+
+  </android.support.v7.widget.CardView>
+  <!--</android.support.constraint.ConstraintLayout>-->
+</layout>
