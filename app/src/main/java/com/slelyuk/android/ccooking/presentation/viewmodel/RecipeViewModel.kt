@@ -1,6 +1,7 @@
 package com.slelyuk.android.ccooking.presentation.viewmodel
 
 import android.databinding.ObservableField
+import android.view.View
 import com.google.firebase.storage.StorageReference
 
 /**
@@ -13,10 +14,10 @@ class RecipeViewModel {
   val image = ObservableField<StorageReference>()
   val vegeterian = ObservableField<Boolean>()
 
-  var onClickDelegate:((Int)->Unit)? = null
+  var onClickDelegate: ((Int, View) -> Unit)? = null
   var currentPosition = -1
 
-  fun onClick() {
-    onClickDelegate?.invoke(currentPosition)
+  fun onClick(v: View) {
+    onClickDelegate?.invoke(currentPosition, v)
   }
 }

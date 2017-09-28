@@ -7,12 +7,12 @@ data class RecipeData(
     var id: String? = null,
     var n: String? = null,
     var d: String? = null,
-    var im: String? = null,
+    var im: String = "",
     var v: Boolean? = null,
     var t: TimeInfo? = null) {
 
   @Suppress("unused")
-  constructor() : this(null, null, null, null, null)
+  constructor() : this(null, null, null, "", null)
 
   /**
    * TimeInfo model entity.

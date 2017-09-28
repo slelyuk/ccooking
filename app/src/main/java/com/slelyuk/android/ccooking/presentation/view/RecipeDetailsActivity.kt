@@ -4,14 +4,12 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import com.slelyuk.android.ccooking.R.layout
-import com.slelyuk.android.ccooking.data.RecipeData
 import com.slelyuk.android.ccooking.databinding.ActivityReceiptsDetailsBinding
 import com.slelyuk.android.ccooking.misc.arg
 import com.slelyuk.android.ccooking.presentation.BaseActivity
 import com.slelyuk.android.ccooking.presentation.DetailsView
 import com.slelyuk.android.ccooking.presentation.viewModelOf
 import com.slelyuk.android.ccooking.presentation.viewmodel.RecipeDetailsViewModel
-import kotlin.properties.ReadOnlyProperty
 
 /**
  * Details receipt activity.
@@ -28,6 +26,8 @@ class RecipeDetailsActivity : BaseActivity<ActivityReceiptsDetailsBinding, Recip
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
+    supportPostponeEnterTransition()
+
     viewModel.recipeId.set(recipeId)
   }
 

@@ -1,6 +1,5 @@
 package com.slelyuk.android.ccooking.presentation
 
-import android.view.View.OnClickListener
 import com.github.salomonbrys.kodein.conf.KodeinGlobalAware
 
 interface BaseView : KodeinGlobalAware {

@@ -8,14 +8,13 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.GenericTypeIndicator
 import com.google.firebase.database.ValueEventListener
-import com.google.gson.Gson
 import com.slelyuk.android.ccooking.R
 import com.slelyuk.android.ccooking.data.RecipeData
+import com.slelyuk.android.ccooking.di.KODEIN_TAG_RECIPES
 import com.slelyuk.android.ccooking.exception.AppException
 import com.slelyuk.android.ccooking.misc.logger.L
 import com.slelyuk.android.ccooking.presentation.BaseViewModel
 import com.slelyuk.android.ccooking.presentation.MainView
-import com.slelyuk.android.ccooking.presentation.adapter.RecipesFilterAdapter
 import com.slelyuk.android.ccooking.presentation.adapter.RecipesSimpleAdapter
 import com.slelyuk.android.ccooking.presentation.invoke
 
@@ -27,13 +26,10 @@ import com.slelyuk.android.ccooking.presentation.invoke
  */
 class RecipesViewModel : BaseViewModel() {
 
-  private val databaseRef: DatabaseReference = instance("recipes")
+  private val databaseRef: DatabaseReference = instance(KODEIN_TAG_RECIPES)
   private val auth: FirebaseAuth = instance()
-  private val gson: Gson = instance()
 
   val adapter = ObservableField<RecipesSimpleAdapter>()
-  val filterAdapter = ObservableField<RecipesFilterAdapter>()
-  //val isEmpty = ReliableField(true)
 
   private val recipesList = mutableListOf<RecipeData>()
 
@@ -50,7 +46,6 @@ class RecipesViewModel : BaseViewModel() {
     }
 
     adapter.set(RecipesSimpleAdapter(recipesList))
-    filterAdapter.set(RecipesFilterAdapter(listOf("Vegetarian", "Fast")))
     loadNext()
   }
 
@@ -60,37 +55,37 @@ class RecipesViewModel : BaseViewModel() {
 
 
   fun loadNext() {
-    async { loadRecipes(if (recipesList.isNotEmpty()) recipesList.last().id else null, 20) }
+    if (recipesList.isEmpty()) {
+      async { loadRecipes(if (recipesList.isNotEmpty()) recipesList.last().id else null, 2) }
+    }
   }
 
   // TODO DELETE
   suspend fun loadRecipes(lastId: String?, pageSize: Int) {
-    (if (lastId != null) databaseRef.orderByKey().endAt(lastId) else databaseRef.orderByKey())
-        .limitToLast(pageSize).addListenerForSingleValueEvent(
-        object : ValueEventListener {
-          override fun onCancelled(error: DatabaseError?) {
-            showErrorCommand(AppException(error?.message + "\n" + error?.details))
-            L.e { error?.message + "\n" + error?.details }
-          }
+//    (if (lastId != null) databaseRef.orderByKey().startAt(lastId) else databaseRef.orderByKey())
+//        .limitToLast(pageSize)
+    databaseRef
+        .limitToLast(100)
+        .addListenerForSingleValueEvent(
+            object : ValueEventListener {
+              override fun onCancelled(error: DatabaseError?) {
+                showErrorCommand(AppException(error?.message + "\n" + error?.details))
+                L.e { error?.message + "\n" + error?.details }
+              }
 
-          override fun onDataChange(snapshot: DataSnapshot?) {
-            showSnackbarCommand("Loaded count: ${snapshot?.childrenCount}")
-            L.d { "Loaded count: ${snapshot?.childrenCount}" }
+              override fun onDataChange(snapshot: DataSnapshot?) {
+                showSnackbarCommand("Loaded count: ${snapshot?.childrenCount}")
 
-            val s: HashMap<String, RecipeData>? = snapshot?.getValue(
-                object : GenericTypeIndicator<HashMap<String, RecipeData>>() {})
+                val s: HashMap<String, RecipeData>? = snapshot?.getValue(
+                    object : GenericTypeIndicator<HashMap<String, RecipeData>>() {})
 
-            if (s?.values == null)
-              return
+                if (s?.values == null)
+                  return
 
-            for ((id: String, recipe: RecipeData) in s) {
-              //val rec: RecipeData = gson.fromJson(gson.toJson(s[id]), RecipeData::class.java)
-              recipe.id = id
-              recipesList.add(recipe)
-            }
-            adapter.get().notifyDataSetChanged()
-          }
-        })
+                recipesList.addAll(s.values)
+                adapter.get().notifyDataSetChanged()
+              }
+            })
   }
 
   override fun onCleared() {

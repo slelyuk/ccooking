@@ -2,7 +2,6 @@ package com.slelyuk.android.ccooking.presentation
 
 import android.app.Activity
 import android.arch.lifecycle.LifecycleRegistry
-import android.arch.lifecycle.LifecycleRegistryOwner
 import android.content.Intent
 import android.databinding.DataBindingUtil
 import android.databinding.ViewDataBinding

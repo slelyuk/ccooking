@@ -1,11 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
 
   <!-- Base application theme. -->
-  <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+  <style name="AppTheme" parent="Theme.AppCompat.NoActionBar">
+    <item name="windowActionBar">false</item>
+    <item name="windowNoTitle">true</item>
+
     <!-- Customize your theme here. -->
     <item name="colorPrimary">@color/colorPrimary</item>
     <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
     <item name="colorAccent">@color/colorAccent</item>
+
+    <!-- enable window content transitions -->
+    <item name="android:windowContentTransitions">true</item>
+
+    <!-- specify enter and exit transitions -->
+    <!-- options are: explode, slide, fade -->
+    <!--<item name="android:windowEnterTransition">@transition/default_transition</item>-->
+    <!--<item name="android:windowExitTransition">@transition/default_transition</item>-->
+
+    <!-- specify shared element transitions -->
+    <!--<item name="android:windowSharedElementEnterTransition">@transition/default_shared_transition</item>-->
+    <!--<item name="android:windowSharedElementExitTransition">@transition/default_shared_transition</item>-->
   </style>
 
 </resources>

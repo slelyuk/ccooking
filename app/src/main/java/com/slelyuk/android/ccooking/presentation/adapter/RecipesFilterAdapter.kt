@@ -12,7 +12,8 @@ import com.yalantis.filter.widget.FilterItem
 /**
  * Created by slelyuk on 9/20/17.
  */
-class RecipesFilterAdapter(items: List<String>) : FilterAdapter<FilterModel>(items.map { Model(it) }),
+class RecipesFilterAdapter(items: List<String>) : FilterAdapter<FilterModel>(
+    items.map { Model(it) }),
     KodeinGlobalAware {
 
   private val appContext: Context = instance()
@@ -31,7 +32,7 @@ class RecipesFilterAdapter(items: List<String>) : FilterAdapter<FilterModel>(ite
     return filterItem
   }
 
-  internal class Model(val value: String): FilterModel {
+  internal class Model(val value: String) : FilterModel {
 
     override fun getText(): String {
       return value

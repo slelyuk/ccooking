@@ -5,10 +5,8 @@ import android.databinding.ObservableBoolean
 import com.github.salomonbrys.kodein.conf.KodeinGlobalAware
 import com.github.salomonbrys.kodein.instance
 import com.slelyuk.android.ccooking.data.ResourceProvider
-import com.slelyuk.android.ccooking.databinding.ReliableField
-import com.slelyuk.android.ccooking.exception.AuthException
 import com.slelyuk.android.ccooking.exception.AppException
-import com.slelyuk.android.ccooking.misc.logger.L
+import com.slelyuk.android.ccooking.exception.AuthException
 import com.slelyuk.android.ccooking.presentation.viewmodel.ToolbarViewModel
 import kotlinx.coroutines.experimental.CancellationException
 import kotlinx.coroutines.experimental.CoroutineScope

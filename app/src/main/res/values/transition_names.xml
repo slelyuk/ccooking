@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="transition_recipe_photo">transition_recipe_photo</string>
+  <string name="transition_recipe_title">transition_recipe_title</string>
+  <string name="transition_recipe_description">transition_recipe_description</string>
+</resources>

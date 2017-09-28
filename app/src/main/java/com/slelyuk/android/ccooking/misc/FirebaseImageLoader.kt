@@ -2,7 +2,7 @@ package com.slelyuk.android.ccooking.misc
 
 import com.bumptech.glide.Priority
 import com.bumptech.glide.load.DataSource
-import com.bumptech.glide.load.DataSource.REMOTE
+import com.bumptech.glide.load.DataSource.LOCAL
 import com.bumptech.glide.load.Options
 import com.bumptech.glide.load.data.DataFetcher
 import com.bumptech.glide.load.data.DataFetcher.DataCallback
@@ -50,7 +50,7 @@ class FirebaseImageLoader : ModelLoader<StorageReference, InputStream> {
     }
 
     override fun getDataSource(): DataSource {
-      return REMOTE
+      return LOCAL
     }
 
     private var mStreamTask: StreamDownloadTask? = null
