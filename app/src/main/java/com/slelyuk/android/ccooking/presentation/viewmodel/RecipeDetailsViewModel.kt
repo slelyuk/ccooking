@@ -8,7 +8,7 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.storage.StorageReference
 import com.slelyuk.android.ccooking.R.string
-import com.slelyuk.android.ccooking.data.IngridientData
+import com.slelyuk.android.ccooking.data.IngredientData
 import com.slelyuk.android.ccooking.data.RecipeData
 import com.slelyuk.android.ccooking.data.StageData
 import com.slelyuk.android.ccooking.databinding.addOnPropertyChangedCallback
@@ -18,6 +18,8 @@ import com.slelyuk.android.ccooking.di.KODEIN_TAG_RECIPES
 import com.slelyuk.android.ccooking.di.KODEIN_TAG_STAGES
 import com.slelyuk.android.ccooking.misc.logger.L
 import com.slelyuk.android.ccooking.presentation.BaseViewModel
+import com.slelyuk.android.ccooking.presentation.adapter.IngredientsAdapter
+import com.slelyuk.android.ccooking.presentation.adapter.ServingTypesAdapter
 
 /**
  * RecipeDetailsViewModel.
@@ -34,7 +36,7 @@ class RecipeDetailsViewModel : BaseViewModel() {
   val image: ObservableField<StorageReference> = ObservableField()
   val name = ObservableField<String>()
   val description = ObservableField<String>()
-  val ingredients = ObservableField<String>()
+  val ingredientsAdapter = ObservableField<ServingTypesAdapter>()
   val stages = ObservableField<String>()
 
   init {
@@ -67,8 +69,8 @@ class RecipeDetailsViewModel : BaseViewModel() {
       }
 
       override fun onDataChange(s: DataSnapshot?) {
-        val ingreds = s?.getValue(IngridientData::class.java) ?: return
-        ingredients.set(ingreds.toString())
+        val ingreds = s?.getValue(IngredientData::class.java) ?: return
+        ingredientsAdapter.set(ServingTypesAdapter(ingreds.i ?: listOf()))
       }
     })
 

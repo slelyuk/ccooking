@@ -44,10 +44,10 @@ class RecipesActivity : BaseActivity<ActivityReceiptsMainBinding, RecipesViewMod
 
   @Subscribe
   fun onRecipeClickEvent(e: RecipeClickEvent) {
-    L.d { "OnRecipeClickEvent: ${e.recipe.id}" }
+    L.d { "OnRecipeClickEvent: ${e.item.id}" }
 
     val intent = Intent(this, RecipeDetailsActivity::class.java)
-    intent.putExtra(EXTRA_RECIPE_ID, e.recipe.id)
+    intent.putExtra(EXTRA_RECIPE_ID, e.item.id)
 
     /*val options = ActivityOptionsCompat.makeSceneTransitionAnimation(
         this,

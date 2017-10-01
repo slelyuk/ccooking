@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
+
+  <data>
+    <variable
+        name="viewModel"
+        type="com.slelyuk.android.ccooking.presentation.viewmodel.IngredientViewModel"
+        />
+  </data>
+
+  <android.support.constraint.ConstraintLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:minHeight="0dp"
+      android:padding="2dp"
+      tools:layout_editor_absoluteX="0dp"
+      tools:layout_editor_absoluteY="0dp"
+      >
+
+    <TextView
+        android:id="@+id/tv_serving_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/farsan"
+        android:text="@{viewModel.name}"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:fontFamily="@font/farsan"
+        tools:text="Name"
+        />
+  </android.support.constraint.ConstraintLayout>
+</layout>

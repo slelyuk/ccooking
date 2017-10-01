@@ -3,7 +3,7 @@ package com.slelyuk.android.ccooking.data
 /**
  * Created by slelyuk on 9/16/17.
  */
-data class IngridientData(
+data class IngredientData(
     val rId: String?,
     val i: List<ServingType>?
 ) {
