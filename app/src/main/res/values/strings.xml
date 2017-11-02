@@ -1,5 +1,4 @@
 <resources>
-  <!--<string name="app_name">CalmCooking</string>-->
   <string name="app_name">AppName</string>
 
   <string name="action_sign_in">Sign in</string>
