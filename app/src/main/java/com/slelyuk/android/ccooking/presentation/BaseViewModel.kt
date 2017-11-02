@@ -43,7 +43,7 @@ abstract class BaseViewModel : ViewModel(), KodeinGlobalAware, Progressable {
   open fun onLoggedIn(success: Boolean) {}
 
   /**
-   * Convenient helper
+   * Run in background with progress and errors indication.
    */
   fun async(showErrors: Boolean = true, block: suspend CoroutineScope.() -> Unit) {
     if (lifecycleJob.isCompleted) {

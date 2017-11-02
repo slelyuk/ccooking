@@ -3,9 +3,15 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
+kotlin {
+  experimental {
+    coroutines "enable"
+  }
+}
+
 android {
   compileSdkVersion 26
-  buildToolsVersion "26.0.1"
+  buildToolsVersion '26.0.2'
   defaultConfig {
     applicationId "com.slelyuk.android.ccooking"
     minSdkVersion 22
@@ -28,7 +34,7 @@ android {
 dependencies {
   //implementation project(':model')
 
-  kapt 'com.android.databinding:compiler:2.5.0-alpha-preview-01'
+  kapt 'com.android.databinding:compiler:3.0.0'
 
   implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlinVersion"
 
@@ -47,8 +53,8 @@ dependencies {
   implementation 'com.android.support.constraint:constraint-layout:1.0.2'
 
   implementation "android.arch.paging:runtime:$archPagingVersion"
-  implementation "android.arch.lifecycle:runtime:$archComponentsVersion"
-  implementation "android.arch.lifecycle:extensions:$archComponentsVersion"
+  implementation "android.arch.lifecycle:runtime:1.0.3"
+  implementation "android.arch.lifecycle:extensions:1.0.0-alpha9-1"
   kapt "android.arch.lifecycle:compiler:$archComponentsVersion"
 
   implementation "com.google.firebase:firebase-auth:$firebaseVersion"
@@ -76,6 +82,5 @@ dependencies {
   androidTestImplementation 'com.android.support.test:runner:1.0.1'
   androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
 }
-
 
 apply plugin: 'com.google.gms.google-services'

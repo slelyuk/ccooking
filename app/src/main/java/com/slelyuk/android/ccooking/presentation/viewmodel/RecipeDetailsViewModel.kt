@@ -10,7 +10,6 @@ import com.google.firebase.storage.StorageReference
 import com.slelyuk.android.ccooking.R.string
 import com.slelyuk.android.ccooking.data.IngredientData
 import com.slelyuk.android.ccooking.data.RecipeData
-import com.slelyuk.android.ccooking.data.StageData
 import com.slelyuk.android.ccooking.databinding.addOnPropertyChangedCallback
 import com.slelyuk.android.ccooking.di.KODEIN_TAG_IMAGES
 import com.slelyuk.android.ccooking.di.KODEIN_TAG_INGREDIENTS
@@ -18,7 +17,6 @@ import com.slelyuk.android.ccooking.di.KODEIN_TAG_RECIPES
 import com.slelyuk.android.ccooking.di.KODEIN_TAG_STAGES
 import com.slelyuk.android.ccooking.misc.logger.L
 import com.slelyuk.android.ccooking.presentation.BaseViewModel
-import com.slelyuk.android.ccooking.presentation.adapter.IngredientsAdapter
 import com.slelyuk.android.ccooking.presentation.adapter.ServingTypesAdapter
 
 /**
@@ -80,8 +78,8 @@ class RecipeDetailsViewModel : BaseViewModel() {
       }
 
       override fun onDataChange(s: DataSnapshot?) {
-        val s = s?.getValue(StageData::class.java) ?: return
-        stages.set(s.toString())
+        //val s = s?.getValue(StageData::class.java) ?: return
+        //stages.set(s.toString())
       }
     })
   }

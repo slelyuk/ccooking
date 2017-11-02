@@ -56,14 +56,14 @@ class RecipesViewModel : BaseViewModel() {
 
   fun loadNext() {
     if (recipesList.isEmpty()) {
-      async { loadRecipes(if (recipesList.isNotEmpty()) recipesList.last().id else null, 2) }
+      async {
+        loadRecipes(if (recipesList.isNotEmpty()) recipesList.last().id else null, 2)
+      }
     }
   }
 
   // TODO DELETE
   suspend fun loadRecipes(lastId: String?, pageSize: Int) {
-//    (if (lastId != null) databaseRef.orderByKey().startAt(lastId) else databaseRef.orderByKey())
-//        .limitToLast(pageSize)
     databaseRef
         .limitToLast(100)
         .addListenerForSingleValueEvent(
